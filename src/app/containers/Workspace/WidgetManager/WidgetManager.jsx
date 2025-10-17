@@ -133,6 +133,13 @@ class WidgetManager extends PureComponent {
         details: i18n._('This widget lets you monitor a webcam.'),
         visible: true,
         disabled: false
+      },
+      {
+        id: 'feedrateoverride',
+        caption: i18n._('Feed Rate Override Widget'),
+        details: i18n._('This widget lets you override feedrate.'),
+        visible: true,
+        disabled: false
       }
     ];
 

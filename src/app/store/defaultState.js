@@ -236,6 +236,10 @@ const defaultState = {
       },
       crosshair: false,
       muted: false
+    },
+    feedrateoverride: {
+      minimized: false,
+      overridePercentage: 100
     }
   }
 };

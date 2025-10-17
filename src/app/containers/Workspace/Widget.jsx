@@ -16,6 +16,7 @@ import TinyGWidget from 'app/widgets/TinyG';
 import ToolWidget from 'app/widgets/Tool';
 import VisualizerWidget from 'app/widgets/Visualizer';
 import WebcamWidget from 'app/widgets/Webcam';
+import FeedRateOverrideWidget from 'app/widgets/FeedRateOverride';
 
 const getWidgetByName = (name) => {
   return {
@@ -31,6 +32,7 @@ const getWidgetByName = (name) => {
     'smoothie': SmoothieWidget,
     'spindle': SpindleWidget,
     'custom': CustomWidget,
+    'feedrateoverride': FeedRateOverrideWidget,
     'tinyg': TinyGWidget,
     'tool': ToolWidget,
     'visualizer': VisualizerWidget,
@@ -43,6 +45,7 @@ class WidgetWrapper extends PureComponent {
 
     render() {
       const { widgetId } = this.props;
+      console.log('WidgetWrapper render', widgetId);
 
       if (typeof widgetId !== 'string') {
         return null;
@@ -53,6 +56,7 @@ class WidgetWrapper extends PureComponent {
       const Widget = getWidgetByName(name);
 
       if (!Widget) {
+        console.log(`WidgetWrapper: Widget not found: ${name}`);
         return null;
       }
 
