@@ -32,21 +32,21 @@ import {
   CAMERA_MODE_ROTATE
 } from './constants';
 
-const IMPERIAL_GRID_COUNT = 32; // 32 in
-const IMPERIAL_GRID_SPACING = 25.4; // 1 in
-const IMPERIAL_AXIS_LENGTH = IMPERIAL_GRID_SPACING * 12; // 12 in
-const METRIC_GRID_COUNT = 60; // 60 cm
-const METRIC_GRID_SPACING = 10; // 10 mm
-const METRIC_AXIS_LENGTH = METRIC_GRID_SPACING * 30; // 300 mm
-const CAMERA_VIEWPORT_WIDTH = 300; // 300 mm
-const CAMERA_VIEWPORT_HEIGHT = 300; // 300 mm
+const IMPERIAL_GRID_COUNT = 60; // 60 in
+const IMPERIAL_GRID_SPACING = 25.4 * 4; // 4 in
+const IMPERIAL_AXIS_LENGTH = IMPERIAL_GRID_SPACING * 20; // 20 in
+const METRIC_GRID_COUNT = 60; // 600 cm
+const METRIC_GRID_SPACING = 100; // 10cm
+const METRIC_AXIS_LENGTH = METRIC_GRID_SPACING * 45; // 450 cm
+const CAMERA_VIEWPORT_WIDTH = 1000; // 300 mm
+const CAMERA_VIEWPORT_HEIGHT = 1000; // 300 mm
 const PERSPECTIVE_FOV = 70;
 const PERSPECTIVE_NEAR = 0.001;
 const PERSPECTIVE_FAR = 2000;
 const ORTHOGRAPHIC_FOV = 35;
 const ORTHOGRAPHIC_NEAR = 0.001;
 const ORTHOGRAPHIC_FAR = 2000;
-const CAMERA_DISTANCE = 200; // Move the camera out a bit from the origin (0, 0, 0)
+const CAMERA_DISTANCE = 2000; // Move the camera out a bit from the origin (0, 0, 0)
 const TRACKBALL_CONTROLS_MIN_DISTANCE = 1;
 const TRACKBALL_CONTROLS_MAX_DISTANCE = 2000;
 
@@ -515,7 +515,7 @@ class Visualizer extends Component {
           x: axisLength + 10,
           y: 0,
           z: 0,
-          size: 20,
+          size: 100,
           text: 'X',
           color: colornames('red')
         });
@@ -523,7 +523,7 @@ class Visualizer extends Component {
           x: 0,
           y: axisLength + 10,
           z: 0,
-          size: 20,
+          size: 100,
           text: 'Y',
           color: colornames('green')
         });
@@ -531,7 +531,7 @@ class Visualizer extends Component {
           x: 0,
           y: 0,
           z: axisLength + 10,
-          size: 20,
+          size: 100,
           text: 'Z',
           color: colornames('blue')
         });
@@ -547,8 +547,8 @@ class Visualizer extends Component {
     createGridLineNumbers(units) {
       const gridCount = (units === IMPERIAL_UNITS) ? IMPERIAL_GRID_COUNT : METRIC_GRID_COUNT;
       const gridSpacing = (units === IMPERIAL_UNITS) ? IMPERIAL_GRID_SPACING : METRIC_GRID_SPACING;
-      const textSize = (units === IMPERIAL_UNITS) ? (25.4 / 3) : (10 / 3);
-      const textOffset = (units === IMPERIAL_UNITS) ? (25.4 / 5) : (10 / 5);
+      const textSize = (units === IMPERIAL_UNITS) ? (25.4) : (50);
+      const textOffset = (units === IMPERIAL_UNITS) ? (25.4 / 5) : (50 / 5);
       const group = new THREE.Group();
 
       for (let i = -gridCount; i <= gridCount; ++i) {
@@ -752,6 +752,49 @@ class Visualizer extends Component {
       }
 
       this.scene.add(this.group);
+
+      this.createDeadzone();
+      this.createMaxPrintRadius();
+    }
+
+    createDeadzone() {
+        const deadzoneRadius = 350; // Deadzone radius in mm
+        const deadzoneThickness = 5;
+        const deadzoneGeometry = new THREE.RingGeometry(
+            deadzoneRadius - deadzoneThickness,
+            deadzoneRadius,
+            128 // segments
+        );
+        const deadzoneMaterial = new THREE.MeshBasicMaterial({
+            color: colornames('red'),
+            side: THREE.DoubleSide,
+            transparent: true,
+            opacity: 0.5
+        });
+        const deadzone = new THREE.Mesh(deadzoneGeometry, deadzoneMaterial);
+        deadzone.name = 'Deadzone';
+
+        this.group.add(deadzone);
+    }
+
+    createMaxPrintRadius() {
+      const maxPrintRadius = 4500; // Max print radius in mm
+      const maxPrintRadiusThickness = 5;
+      const maxPrintRadiusGeometry = new THREE.RingGeometry(
+          maxPrintRadius - maxPrintRadiusThickness,
+          maxPrintRadius,
+          128 // segments
+      );
+      const maxPrintRadiusMaterial = new THREE.MeshBasicMaterial({
+          color: colornames('blue'),
+          side: THREE.DoubleSide,
+          transparent: true,
+          opacity: 0.5
+      });
+      const maxPrintRadiusMesh = new THREE.Mesh(maxPrintRadiusGeometry, maxPrintRadiusMaterial);
+      maxPrintRadiusMesh.name = 'MaxPrintRadius';
+
+      this.group.add(maxPrintRadiusMesh);
     }
 
     // @param [options] The options object.
