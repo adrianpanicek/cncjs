@@ -25,6 +25,11 @@ export const isM190 = (x) => {
   return pattern.test(x);
 };
 
+export const isM220 = (x) => {
+  const pattern = /^M0*220$/i;
+  return pattern.test(x);
+};
+
 export const replaceCommands = (gcode, commands, callback) => {
   commands = ensureArray(commands);
   if (!commands.length) {

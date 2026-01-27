@@ -566,5 +566,7 @@
   "Warning: No custom tool probe commands are defined": "Aviso: Nenhum comando de sondagem de ferramenta personalizado está definido",
   "Connect to the controller to view the tool probe commands.": "Conecte-se ao controlador para visualizar os comandos de sondagem de ferramenta.",
   "Manual Tool Change (Custom Probing)": "Troca Manual de Ferramenta (Sondagem Personalizada)",
-  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "Esta opção ignora o comando M6 e pausa as operações do controlador, dando a você controle manual total sobre o processo de troca de ferramenta."
+  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "Esta opção ignora o comando M6 e pausa as operações do controlador, dando a você controle manual total sobre o processo de troca de ferramenta.",
+  "Feed Rate Override Widget": "",
+  "This widget lets you override feedrate.": ""
 }

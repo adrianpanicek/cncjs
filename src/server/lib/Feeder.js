@@ -55,6 +55,23 @@ class Feeder extends events.EventEmitter {
     }
   }
 
+  feedSkipQueue(data, context = {}) {
+    // Clear pending state when the feeder queue is empty
+    if (this.state.queue.length === 0) {
+      this.state.pending = false;
+    }
+
+    data = ensureArray(data);
+    if (data.length > 0) {
+      const queueItems = data.map(command => ({
+        command,
+        context,
+      }));
+      this.state.queue = this.state.queue.unshift(...queueItems);
+      this.emit('change');
+    }
+  }
+
   hold(reason) {
     if (this.state.hold) {
       return;

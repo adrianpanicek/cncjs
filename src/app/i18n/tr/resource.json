@@ -566,5 +566,7 @@
   "Warning: No custom tool probe commands are defined": "Uyarı: Tanımlı özel takım probu komutları yok",
   "Connect to the controller to view the tool probe commands.": "Takım probu komutlarını görüntülemek için denetleyiciye bağlanın",
   "Manual Tool Change (Custom Probing)": "Manuel Takım Değişimi (Özelleştirilmiş Probing)",
-  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "Bu seçenek M6 komutunu atlar ve denetleyici işlemleri duraklatır, takım değiştirme süreci üzerinde tam manuel kontrol sağlar."
+  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "Bu seçenek M6 komutunu atlar ve denetleyici işlemleri duraklatır, takım değiştirme süreci üzerinde tam manuel kontrol sağlar.",
+  "Feed Rate Override Widget": "",
+  "This widget lets you override feedrate.": ""
 }

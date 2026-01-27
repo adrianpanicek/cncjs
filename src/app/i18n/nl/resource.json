@@ -566,5 +566,7 @@
   "Warning: No custom tool probe commands are defined": "Waarschuwing: Er zijn geen aangepaste gereedschapsmeetcommando's gedefinieerd",
   "Connect to the controller to view the tool probe commands.": "Verbind met de controller om de gereedschapsmeetcommando's te bekijken",
   "Manual Tool Change (Custom Probing)": "Handmatige gereedschapswissel (Aangepaste meting)",
-  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "Deze optie slaat de M6-opdracht over en pauzeert de controlleroperaties, waardoor je volledige handmatige controle krijgt over het gereedschapswisselproces."
+  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "Deze optie slaat de M6-opdracht over en pauzeert de controlleroperaties, waardoor je volledige handmatige controle krijgt over het gereedschapswisselproces.",
+  "Feed Rate Override Widget": "",
+  "This widget lets you override feedrate.": ""
 }

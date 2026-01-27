@@ -566,5 +566,7 @@
   "Warning: No custom tool probe commands are defined": "Advarsel: Ingen tilpassede verktøyprobekommandoer er definert",
   "Connect to the controller to view the tool probe commands.": "Koble til kontrolleren for å vise verktøyprobekommandoene.",
   "Manual Tool Change (Custom Probing)": "Manuell verktøyskift (Egendefinert probing)",
-  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "Denne innstillingen hopper over M6-kommandoen og pauser kontrollerens operasjoner, og gir deg full manuell kontroll over verktøyskiftprosessen."
+  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "Denne innstillingen hopper over M6-kommandoen og pauser kontrollerens operasjoner, og gir deg full manuell kontroll over verktøyskiftprosessen.",
+  "Feed Rate Override Widget": "",
+  "This widget lets you override feedrate.": ""
 }

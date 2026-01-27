@@ -45,7 +45,7 @@ import {
   WRITE_SOURCE_SENDER
 } from '../constants';
 import * as builtinCommand from '../utils/builtin-command';
-import { isM0, isM1, isM6, isM109, isM190, replaceM6 } from '../utils/gcode';
+import { isM0, isM1, isM6, isM109, isM190, replaceM6, isM220 } from '../utils/gcode';
 import { mapPositionToUnits, mapValueToUnits } from '../utils/units';
 import MarlinRunner from './MarlinRunner';
 import interpret from './interpret';
@@ -1443,6 +1443,31 @@ class MarlinController {
         },
         'lasertest:off': () => {
           this.writeln('M5');
+        },
+        'gcode:now': () => {
+          const [commands, context] = args;
+          const data = ensureArray(commands)
+            .join('\n')
+            .split(/\r?\n/)
+            .filter(line => {
+              if (typeof line !== 'string') {
+                return false;
+              }
+
+              return line.trim().length > 0;
+            });
+
+          this.feeder.feedSkipQueue(data, context);
+
+          { // The following criteria must be met to trigger the feeder
+            const notBusy = !(this.history.writeSource);
+            const senderIdle = (this.sender.state.sent === this.sender.state.received);
+            const feederIdle = !(this.feeder.isPending());
+
+            if (notBusy && senderIdle && feederIdle) {
+              this.feeder.next();
+            }
+          }
         },
         'gcode': () => {
           const [commands, context] = args;

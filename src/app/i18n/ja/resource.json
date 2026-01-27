@@ -566,5 +566,7 @@
   "Warning: No custom tool probe commands are defined": "警告: カスタム工具プローブコマンドが定義されていません。",
   "Connect to the controller to view the tool probe commands.": "工具プローブコマンドを確認するには、コントローラーに接続してください。",
   "Manual Tool Change (Custom Probing)": "手動ツール交換（カスタムプロービング）",
-  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "このオプションはM6コマンドをスキップし、コントローラーの操作を一時停止して、工具交換プロセスに対する完全な手動制御を提供します。"
+  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "このオプションはM6コマンドをスキップし、コントローラーの操作を一時停止して、工具交換プロセスに対する完全な手動制御を提供します。",
+  "Feed Rate Override Widget": "",
+  "This widget lets you override feedrate.": ""
 }

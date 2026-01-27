@@ -1,5 +1,6 @@
 import React from 'react';
 import Widget from 'app/components/Widget';
+import controller from 'app/lib/controller';
 
 class FeedRateOverride extends React.PureComponent {
   state = {
@@ -7,11 +8,8 @@ class FeedRateOverride extends React.PureComponent {
   };
 
   sendCommand = (cmd) => {
-    const { actions } = this.props;
-    if (actions && typeof actions.sendGcode === 'function') {
-      actions.sendGcode(cmd);
-      console.log('Sent:', cmd);
-    }
+    controller.command('gcode:now', cmd);
+    console.log('Sent:', cmd);
   };
 
   updateFeedRate = (delta) => {

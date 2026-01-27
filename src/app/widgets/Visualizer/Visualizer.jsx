@@ -758,7 +758,7 @@ class Visualizer extends Component {
     }
 
     createDeadzone() {
-        const deadzoneRadius = 350; // Deadzone radius in mm
+        const deadzoneRadius = 1305; // Deadzone radius in mm
         const deadzoneThickness = 5;
         const deadzoneGeometry = new THREE.RingGeometry(
             deadzoneRadius - deadzoneThickness,

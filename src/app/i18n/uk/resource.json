@@ -566,5 +566,7 @@
   "Warning: No custom tool probe commands are defined": "Попередження: Не визначено власних команд зонда інструменту",
   "Connect to the controller to view the tool probe commands.": "Підключіться до контролера для перегляду команд зонда інструменту.",
   "Manual Tool Change (Custom Probing)": "Ручна заміна інструмента (Користувацьке зондування)",
-  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "Ця опція пропускає команду M6 і призупиняє операції контролера, надаючи повний ручний контроль над процесом заміни інструмента."
+  "This option skips the M6 command and pauses controller operations, giving you full manual control over the tool change process.": "Ця опція пропускає команду M6 і призупиняє операції контролера, надаючи повний ручний контроль над процесом заміни інструмента.",
+  "Feed Rate Override Widget": "",
+  "This widget lets you override feedrate.": ""
 }
