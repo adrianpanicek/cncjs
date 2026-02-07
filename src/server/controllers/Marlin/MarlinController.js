@@ -1445,6 +1445,7 @@ class MarlinController {
           this.writeln('M5');
         },
         'gcode:now': () => {
+          console.log("gcode:now");
           const [commands, context] = args;
           const data = ensureArray(commands)
             .join('\n')
