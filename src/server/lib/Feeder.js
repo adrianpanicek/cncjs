@@ -67,7 +67,7 @@ class Feeder extends events.EventEmitter {
         command,
         context,
       }));
-      this.state.queue = this.state.queue.unshift(...queueItems);
+      this.state.queue.unshift(...queueItems);
       this.emit('change');
     }
   }
