@@ -1459,14 +1459,10 @@ class MarlinController {
 
           this.feeder.feedSkipQueue(data, context);
 
-          { // The following criteria must be met to trigger the feeder
-            const notBusy = !(this.history.writeSource);
-            const senderIdle = (this.sender.state.sent === this.sender.state.received);
-            const feederIdle = !(this.feeder.isPending());
-
-            if (notBusy && senderIdle && feederIdle) {
-              this.feeder.next();
-            }
+          // Always trigger the feeder immediately for gcode:now commands
+          // This ensures override commands are sent as soon as possible
+          if (!this.feeder.isPending()) {
+            this.feeder.next();
           }
         },
         'gcode': () => {
